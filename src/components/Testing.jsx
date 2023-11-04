@@ -49,6 +49,11 @@ function Testing() {
 //       {image ? <img className="rounded-lg max-w-full h-auto " src={image} alt={`Image ${index + 1}`} /> : 'Click to select an image'}
 //     </div>
 //   ));
+const [isChecked, setIsChecked] = useState(false);
+
+const toggleCheckbox = () => {
+  setIsChecked(!isChecked);
+};
 const elements = allImages.map((image, index) => (
     <div
       key={index}
@@ -66,12 +71,14 @@ const elements = allImages.map((image, index) => (
         ) : (
           'Click to select an image'
         )}
-        <label className="absolute top-0 left-0 w-full h-full cursor-pointer">
+        <label className="absolute top-0 p-2 left-0 w-full h-full cursor-pointer">
           <input
             type="checkbox"
             className="absolute opacity-0 w-6 h-6 cursor-pointer"
+            checked={isChecked}
+            onChange={toggleCheckbox}
           />
-          <div className="bg-white border border-gray-400 w-6 h-6 rounded-lg hover:bg-gray-100 transition-colors duration-300 ease-in-out opacity-0 group-hover:opacity-100"></div>
+          <div className="bg-white border border-gray-400 w-6 h-6 rounded-lg hover:bg-gray-400 transition-colors duration-300 ease-in-out opacity-0 group-hover:opacity-100"></div>
         </label>
       </div>
     </div>
